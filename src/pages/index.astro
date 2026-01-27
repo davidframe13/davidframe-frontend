@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import PhotoSessions from '../components/sections/PhotoSessions.astro';
+import Features from '../components/sections/Features.astro';
+import FeaturedProducts from '../components/sections/FeaturedProducts.astro';
+import BeforeAfter from '../components/sections/BeforeAfter.astro';
+import Gallery from '../components/sections/Gallery.astro';
+import FAQ from '../components/sections/FAQ.astro';
+---
+
+<BaseLayout 
+  title="DavidFrame - Presets y LUTs Cinematográficos Profesionales"
+  description="Transforma tus fotografías con presets y LUTs cinematográficos profesionales. Compatible con Lightroom Desktop y Mobile. Entrega instantánea."
+>
+  <!-- Hero Section -->
+  <Hero 
+    photographer="David Frame"
+    tagline="Presets & LUTs Cinematográficos Profesionales"
+    description="Transforma tus fotografías con tonos de cine. Presets probados en miles de fotos para Lightroom Desktop y Mobile."
+    heroImage="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1920&h=1080&fit=crop&q=80"
+  />
+
+  <!-- Sesiones Fotográficas -->
+  <PhotoSessions />
+
+  <!-- Features: Beneficios (Compatibilidad oculta) -->
+  <Features />
+
+  <!-- Productos Destacados -->
+  <FeaturedProducts />
+
+  <!-- Before/After Interactivo -->
+  <BeforeAfter />
+
+  <!-- Galería de Portfolio -->
+  <Gallery />
+
+  <!-- FAQ -->
+  <FAQ />
+</BaseLayout>

@@ -1,0 +1,105 @@
+---
+import { ShoppingCart } from 'lucide-react';
+
+const navLinks = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Productos', href: '/productos' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Contacto', href: '/contacto' },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="container-custom">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2 group">
+        <div class="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center">
+          <span class="text-white font-bold text-xl">DF</span>
+        </div>
+        <span class="text-xl font-bold group-hover:text-primary transition-colors">
+          DavidFrame
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        {navLinks.map(link => (
+          <a 
+            href={link.href}
+            class="text-text-secondary hover:text-primary transition-colors font-medium"
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
+
+      <!-- Cart Icon -->
+      <div class="flex items-center space-x-4">
+        <a 
+          href="/carrito" 
+          class="relative p-2 hover:bg-bg-tertiary rounded-lg transition-colors group"
+          aria-label="Carrito de compras"
+        >
+          <ShoppingCart className="w-6 h-6 group-hover:text-primary transition-colors" />
+          <span class="absolute -top-1 -right-1 w-5 h-5 bg-secondary rounded-full flex items-center justify-center text-xs font-bold">
+            0
+          </span>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button 
+          id="mobile-menu-button"
+          class="md:hidden p-2 hover:bg-bg-tertiary rounded-lg transition-colors"
+          aria-label="Abrir menú"
+        >
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-bg-secondary border-t border-border">
+    <div class="container-custom py-4 space-y-2">
+      {navLinks.map(link => (
+        <a 
+          href={link.href}
+          class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-bg-tertiary rounded-lg transition-all"
+        >
+          {link.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Scroll effect
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 50) {
+      navbar?.classList.add('glass', 'shadow-lg');
+      navbar?.classList.remove('bg-transparent');
+    } else {
+      navbar?.classList.remove('glass', 'shadow-lg');
+      navbar?.classList.add('bg-transparent');
+    }
+    
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

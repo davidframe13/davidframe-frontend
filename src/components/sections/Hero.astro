@@ -1,0 +1,101 @@
+---
+import { ChevronDown } from 'lucide-react';
+
+interface Props {
+  photographer?: string;
+  tagline?: string;
+  description?: string;
+  heroImage?: string;
+}
+
+const {
+  photographer = 'David Frame',
+  tagline = 'Presets & LUTs Cinematográficos Profesionales',
+  description = 'Transforma tus fotografías con tonos de cine. Presets probados en miles de fotos para Lightroom Desktop y Mobile.',
+  heroImage = 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1920&h=1080&fit=crop&q=80'
+} = Astro.props;
+---
+
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background Image con Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src={heroImage}
+      alt="Hero background"
+      class="w-full h-full object-cover parallax"
+      id="hero-image"
+    />
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-bg-primary/70 via-bg-primary/50 to-bg-primary"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 container-custom text-center px-4">
+    <div class="max-w-4xl mx-auto space-y-6 fade-in-up">
+      <!-- Heading -->
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+        Soy <span class="text-gradient">{photographer}</span>
+      </h1>
+      
+      <!-- Tagline -->
+      <p class="text-xl md:text-2xl lg:text-3xl text-text-secondary font-light">
+        {tagline}
+      </p>
+
+      <!-- Description -->
+      <p class="text-base md:text-lg text-text-muted max-w-2xl mx-auto">
+        {description}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+        <a href="/productos" class="btn-primary w-full sm:w-auto text-center">
+          Ver Productos
+        </a>
+        <a href="#productos-destacados" class="btn-secondary w-full sm:w-auto text-center">
+          Ver Ejemplos
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 fade-in">
+    <a 
+      href="#compatibilidad" 
+      class="flex flex-col items-center gap-2 text-text-muted hover:text-primary transition-colors group"
+      aria-label="Scroll hacia abajo"
+    >
+      <span class="text-sm font-medium">Descubre más</span>
+      <ChevronDown className="w-6 h-6 animate-bounce group-hover:text-primary" />
+    </a>
+  </div>
+</section>
+
+<script>
+  // Parallax effect
+  const heroImage = document.getElementById('hero-image');
+  
+  if (heroImage) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * 0.5;
+      heroImage.style.transform = `translateY(${rate}px)`;
+    });
+  }
+</script>
+
+<style>
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
+</style>

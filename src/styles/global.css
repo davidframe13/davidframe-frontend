@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Colores principales */
+    --color-primary: 99 102 241; /* #6366F1 */
+    --color-primary-dark: 79 70 229; /* #4F46E5 */
+    --color-secondary: 236 72 153; /* #EC4899 */
+    
+    /* Fondos oscuros */
+    --color-bg-primary: 10 10 15; /* #0A0A0F */
+    --color-bg-secondary: 19 19 26; /* #13131A */
+    --color-bg-tertiary: 28 28 38; /* #1C1C26 */
+    
+    /* Textos */
+    --color-text-primary: 249 250 251; /* #F9FAFB */
+    --color-text-secondary: 156 163 175; /* #9CA3AF */
+    --color-text-muted: 107 114 128; /* #6B7280 */
+    
+    /* Bordes */
+    --color-border: 45 45 58; /* #2D2D3A */
+    
+    /* Estados */
+    --color-success: 16 185 129; /* #10B981 */
+    --color-error: 239 68 68; /* #EF4444 */
+    --color-warning: 245 158 11; /* #F59E0B */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Scrollbar personalizado */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-secondary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-bg-tertiary rounded-lg;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+}
+
+@layer components {
+  /* Botón primario */
+  .btn-primary {
+    @apply bg-gradient-primary text-white font-semibold py-3 px-6 rounded-lg;
+    @apply hover:opacity-90 transition-opacity duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-primary;
+  }
+
+  /* Botón secundario */
+  .btn-secondary {
+    @apply bg-bg-tertiary text-text-primary font-semibold py-3 px-6 rounded-lg border border-border;
+    @apply hover:bg-bg-secondary transition-colors duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-primary;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-bg-tertiary rounded-lg border border-border p-6;
+    @apply transition-all duration-200;
+  }
+
+  .card:hover {
+    @apply border-primary/50 shadow-lg shadow-primary/10;
+  }
+
+  /* Input */
+  .input {
+    @apply w-full bg-bg-secondary text-text-primary border border-border rounded-lg px-4 py-3;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply placeholder:text-text-muted;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-primary/10 text-primary border border-primary/20;
+  }
+
+  .badge-success {
+    @apply bg-success/10 text-success border border-success/20;
+  }
+
+  .badge-error {
+    @apply bg-error/10 text-error border border-error/20;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+
+  /* Animaciones de scroll reveal */
+  .fade-in {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-in-out;
+  }
+
+  .fade-in-down {
+    animation: fadeInDown 0.8s ease-in-out;
+  }
+
+  .slide-in-left {
+    animation: slideInLeft 0.8s ease-in-out;
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.8s ease-in-out;
+  }
+
+  /* Parallax */
+  .parallax {
+    transform: translateY(var(--parallax-offset, 0));
+    transition: transform 0.3s ease-out;
+  }
+
+  /* Contenedor con max-width responsivo */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Sección con padding vertical */
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-bg-tertiary/50 backdrop-blur-lg border border-border/50;
+  }
+
+  /* Photo session cards - Hover effect suave */
+  .photo-session-card {
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .photo-session-card:hover {
+    @apply shadow-xl shadow-primary/20;
+  }
+}
+
+/* Keyframes para animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgb(var(--color-primary) / 0.3);
+  color: rgb(var(--color-text-primary));
+}

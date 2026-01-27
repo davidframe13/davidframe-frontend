@@ -1,0 +1,62 @@
+---
+import ComparisonSlider from '../ui/ComparisonSlider';
+import { featuredProducts } from '../../data/products';
+
+// Usar el primer producto como ejemplo
+const exampleProduct = featuredProducts[0];
+---
+
+<section class="section bg-bg-primary">
+  <div class="container-custom">
+    <!-- Header -->
+    <div class="text-center mb-16 fade-in-up">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        Mira la Diferencia
+      </h2>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        Desliza para comparar el antes y después de aplicar nuestros presets cinematográficos
+      </p>
+    </div>
+
+    <!-- Comparison Slider -->
+    <div class="max-w-4xl mx-auto fade-in">
+      <ComparisonSlider 
+        client:load
+        beforeImage={exampleProduct.beforeAfter.before}
+        afterImage={exampleProduct.beforeAfter.after}
+        className="mb-8"
+      />
+      
+      <!-- Instructions -->
+      <div class="text-center space-y-4">
+        <p class="text-text-muted">
+          <span class="inline-flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+            </svg>
+            Desliza para comparar
+          </span>
+        </p>
+        <p class="text-xl md:text-2xl font-light text-text-secondary">
+          "Transforma tus fotos con <span class="text-gradient font-semibold">un solo preset</span>"
+        </p>
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-16">
+      <div class="text-center fade-in-up" style="animation-delay: 0.1s">
+        <div class="text-4xl font-bold text-primary mb-2">15+</div>
+        <p class="text-text-muted">Presets por pack</p>
+      </div>
+      <div class="text-center fade-in-up" style="animation-delay: 0.2s">
+        <div class="text-4xl font-bold text-primary mb-2">1-Click</div>
+        <p class="text-text-muted">Instalación fácil</p>
+      </div>
+      <div class="text-center fade-in-up" style="animation-delay: 0.3s">
+        <div class="text-4xl font-bold text-primary mb-2">∞</div>
+        <p class="text-text-muted">Uso ilimitado</p>
+      </div>
+    </div>
+  </div>
+</section>

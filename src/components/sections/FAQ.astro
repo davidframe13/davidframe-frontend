@@ -1,0 +1,64 @@
+---
+import { faqs } from '../../data/faq';
+---
+
+<section class="section bg-bg-primary">
+  <div class="container-custom">
+    <!-- Header -->
+    <div class="text-center mb-16 fade-in-up">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        Preguntas Frecuentes
+      </h2>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        Todo lo que necesitas saber sobre los presets
+      </p>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="max-w-3xl mx-auto space-y-4">
+      {faqs.map((faq, index) => (
+        <details 
+          class="group bg-bg-tertiary rounded-lg border border-border overflow-hidden fade-in-up"
+          style={`animation-delay: ${index * 0.05}s`}
+        >
+          <summary class="flex items-center justify-between w-full px-6 py-4 cursor-pointer select-none list-none">
+            <span class="text-lg font-semibold pr-8">{faq.question}</span>
+            <svg 
+              class="w-5 h-5 text-primary transition-transform duration-200 group-open:rotate-180 flex-shrink-0" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-4 text-text-secondary">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12 fade-in">
+      <p class="text-text-secondary mb-4">
+        ¿Tienes más preguntas?
+      </p>
+      <a 
+        href="/contacto" 
+        class="btn-primary inline-flex items-center gap-2"
+      >
+        Contáctame
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

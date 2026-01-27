@@ -1,0 +1,102 @@
+---
+import { Monitor, Smartphone, FileImage, Palette, Zap, Sparkles, DollarSign, GraduationCap } from 'lucide-react';
+import { compatibilityFeatures, benefitFeatures, type Feature } from '../../data/features';
+
+// Mapeo de iconos
+const iconMap: Record<string, any> = {
+  'monitor': Monitor,
+  'smartphone': Smartphone,
+  'file-image': FileImage,
+  'palette': Palette,
+  'zap': Zap,
+  'sparkles': Sparkles,
+  'dollar-sign': DollarSign,
+  'graduation-cap': GraduationCap,
+};
+
+const getIcon = (iconName: string) => {
+  return iconMap[iconName] || Monitor;
+};
+---
+
+<!-- Sección de Compatibilidad - OCULTA TEMPORALMENTE -->
+<!-- 
+<section id="compatibilidad" class="section bg-bg-secondary">
+  <div class="container-custom">
+    <div class="text-center mb-16 fade-in-up">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        Compatible con Todo
+      </h2>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        Usa mis presets en cualquier dispositivo y con cualquier formato de imagen
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      {compatibilityFeatures.map((feature, index) => {
+        const IconComponent = getIcon(feature.icon);
+        return (
+          <div 
+            class="flex flex-col items-center text-center space-y-4 fade-in-up"
+            style={`animation-delay: ${index * 0.1}s`}
+          >
+            <div class="w-20 h-20 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+              <IconComponent className="w-10 h-10 text-primary" />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-1">{feature.title}</h3>
+              <p class="text-text-muted">{feature.description}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="text-center mt-16 fade-in">
+      <p class="text-2xl md:text-3xl font-light text-text-secondary max-w-3xl mx-auto">
+        "Dale vida a tus fotos con <span class="text-gradient font-semibold">colores cinematográficos</span>"
+      </p>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- Sección de Beneficios -->
+<section class="section bg-bg-primary">
+  <div class="container-custom">
+    <!-- Header -->
+    <div class="text-center mb-16 fade-in-up">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        ¿Por qué elegir mis presets?
+      </h2>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        Creados y probados por fotógrafo profesional, perfectos para principiantes y expertos
+      </p>
+    </div>
+
+    <!-- Grid de Beneficios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {benefitFeatures.map((feature, index) => {
+        const IconComponent = getIcon(feature.icon);
+        return (
+          <div 
+            class="card group hover:scale-105 transition-transform duration-300 fade-in-up"
+            style={`animation-delay: ${index * 0.1}s`}
+          >
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <IconComponent className="w-6 h-6 text-primary" />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">{feature.title}</h3>
+                <p class="text-text-muted text-sm">{feature.description}</p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
