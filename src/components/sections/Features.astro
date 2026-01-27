@@ -62,41 +62,28 @@ const getIcon = (iconName: string) => {
 -->
 
 <!-- Sección de Beneficios -->
-<section class="section bg-bg-primary">
+<section class="section bg-bg-primary relative">
   <div class="container-custom">
-    <!-- Header -->
-    <div class="text-center mb-16 fade-in-up">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-        ¿Por qué elegir mis presets?
-      </h2>
-      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
-        Creados y probados por fotógrafo profesional, perfectos para principiantes y expertos
-      </p>
-    </div>
+    <!-- Layout de dos columnas -->
+    <div class="grid grid-cols-1 lg:grid-cols-[38%_1fr] gap-12 lg:gap-20 items-start fade-in-up relative">
+      
+      <!-- Columna Izquierda: Título -->
+      <div class="relative lg:pr-12 pb-8 lg:pb-0 border-b lg:border-b-0 border-border">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif italic font-light leading-tight text-text-primary">
+          ¿Por qué elegir mis Presets de Lightroom?
+        </h2>
+      </div>
 
-    <!-- Grid de Beneficios -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      {benefitFeatures.map((feature, index) => {
-        const IconComponent = getIcon(feature.icon);
-        return (
-          <div 
-            class="card group hover:scale-105 transition-transform duration-300 fade-in-up"
-            style={`animation-delay: ${index * 0.1}s`}
-          >
-            <div class="flex items-start space-x-4">
-              <div class="flex-shrink-0">
-                <div class="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <IconComponent className="w-6 h-6 text-primary" />
-                </div>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p class="text-text-muted text-sm">{feature.description}</p>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+      <!-- Línea Divisoria (solo desktop) -->
+      <div class="hidden lg:block absolute left-[38%] top-0 bottom-0 w-[1px] bg-border"></div>
+
+      <!-- Columna Derecha: Descripción -->
+      <div class="relative lg:pl-12 pt-8 lg:pt-0">
+        <p class="text-lg md:text-xl leading-[1.8] text-text-secondary">
+          Transforma tus fotografías con tonos cinematográficos profesionales aplicados en un solo click. Cada preset ha sido probado en miles de fotos reales, desde bodas hasta editoriales. Con un pago único son tuyos para siempre, compatibles con Lightroom Desktop y Mobile. Incluye tutorial de instalación paso a paso para que comiences en minutos, sin importar tu nivel de experiencia.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
