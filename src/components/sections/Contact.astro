@@ -1,0 +1,96 @@
+---
+import ContactForm from '../ui/ContactForm';
+import { MapPin, Mail, Instagram, Youtube } from 'lucide-react';
+
+// Datos del fotógrafo (puedes actualizar estos valores)
+const photographer = {
+  name: 'David Frame',
+  photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80',
+  location: 'Popayán, Colombia',
+  email: 'hola@davidframe.co',
+  description: '¿Tienes alguna pregunta o proyecto en mente? Escríbeme y hablemos.',
+  social: [
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/davidframe.0?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+      icon: Instagram,
+    },
+    {
+      name: 'YouTube',
+      url: 'https://www.youtube.com/@DavidFrame.0',
+      icon: Youtube,
+    },
+  ],
+};
+---
+
+<section id="contacto" class="section bg-bg-primary">
+  <div class="container-custom">
+    <!-- Header con Foto e Info -->
+    <div class="max-w-5xl mx-auto mb-12 fade-in-up">
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
+        <!-- Foto Circular -->
+        <div class="flex-shrink-0">
+          <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden ring-4 ring-border">
+            <img 
+              src={photographer.photo}
+              alt={photographer.name}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        <!-- Info del Fotógrafo -->
+        <div class="flex-1">
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif italic font-light mb-3 text-text-primary">
+            let's talk
+          </h2>
+          <p class="text-lg md:text-xl text-text-secondary mb-4 max-w-2xl">
+            {photographer.description}
+          </p>
+          
+          <!-- Contacto Info -->
+          <div class="flex flex-wrap items-center gap-4 md:gap-6 text-text-secondary">
+            <!-- Ubicación -->
+            <div class="inline-flex items-center gap-2">
+              <MapPin className="w-5 h-5 text-primary" />
+              <span class="text-sm md:text-base">{photographer.location}</span>
+            </div>
+
+            <!-- Email -->
+            <a 
+              href={`mailto:${photographer.email}`}
+              class="inline-flex items-center gap-2 hover:text-primary transition-colors"
+            >
+              <Mail className="w-5 h-5 text-primary" />
+              <span class="text-sm md:text-base">{photographer.email}</span>
+            </a>
+
+            <!-- Redes Sociales -->
+            <div class="inline-flex items-center gap-3">
+              {photographer.social.map((social) => {
+                const IconComponent = social.icon;
+                return (
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-9 h-9 rounded-lg bg-bg-tertiary border border-border flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-all group"
+                    aria-label={social.name}
+                  >
+                    <IconComponent className="w-5 h-5 group-hover:text-primary transition-colors" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario de Contacto -->
+    <div class="max-w-5xl mx-auto fade-in" style="animation-delay: 0.2s">
+      <ContactForm client:load />
+    </div>
+  </div>
+</section>
