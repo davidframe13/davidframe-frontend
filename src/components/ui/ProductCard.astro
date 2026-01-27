@@ -9,90 +9,109 @@ interface Props {
 const { product, index = 0 } = Astro.props;
 
 // Formatear precio colombiano
-const formattedPrice = new Intl.NumberFormat('es-CO', {
-  style: 'currency',
-  currency: 'COP',
-  minimumFractionDigits: 0,
-  maximumFractionDigits: 0
-}).format(product.price);
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(price);
+};
+
+const formattedPrice = formatPrice(product.price);
+const formattedOriginalPrice = product.originalPrice ? formatPrice(product.originalPrice) : null;
 ---
 
-<div 
-  class="card group cursor-pointer overflow-hidden fade-in-up"
+<a 
+  href={`/productos/${product.slug}`}
+  class="group block fade-in-up"
   style={`animation-delay: ${index * 0.1}s`}
 >
-  <!-- Image Container -->
-  <div class="relative aspect-[4/3] overflow-hidden rounded-lg mb-4 bg-bg-secondary">
-    <img 
-      src={product.previewImage}
-      alt={product.name}
-      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-      loading="lazy"
-    />
-    
-    <!-- Hover Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-bg-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      <div class="absolute bottom-4 left-4 right-4">
-        <p class="text-sm text-text-secondary line-clamp-2">
-          {product.description}
-        </p>
-      </div>
-    </div>
-
-    <!-- Badge de categoría -->
-    {product.category === 'pack' && (
-      <div class="absolute top-4 right-4">
-        <span class="badge badge-primary text-xs uppercase font-semibold">
-          Pack
-        </span>
-      </div>
-    )}
-  </div>
-
-  <!-- Product Info -->
-  <div class="space-y-3">
-    <div>
-      <h3 class="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
-        {product.name}
-      </h3>
-      
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2 mb-2">
-        {product.tags.slice(0, 3).map(tag => (
-          <span class="text-xs text-text-muted">
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    <!-- Price & CTA -->
-    <div class="flex items-center justify-between pt-2 border-t border-border">
-      <div>
-        <p class="text-2xl font-bold text-gradient">
-          {formattedPrice}
-        </p>
-      </div>
-      
-      <a 
-        href={`/productos/${product.slug}`}
-        class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors text-sm font-semibold"
-      >
-        Ver Detalles
-        <svg 
-          class="w-4 h-4 transition-transform group-hover:translate-x-1" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor"
-        >
-          <path 
-            stroke-linecap="round" 
-            stroke-linejoin="round" 
-            stroke-width="2" 
-            d="M9 5l7 7-7 7"
+  <!-- Imagen con Collage -->
+  <div class="relative aspect-[3/4] overflow-hidden rounded-lg bg-bg-secondary">
+    <!-- Grid de Collage -->
+    <div class={`grid gap-[2px] h-full ${
+      product.collageImages.length === 4 ? 'grid-cols-2 grid-rows-2' :
+      product.collageImages.length === 6 ? 'grid-cols-3 grid-rows-2' :
+      'grid-cols-2 grid-rows-2'
+    }`}>
+      {product.collageImages.slice(0, 6).map((image) => (
+        <div class="relative overflow-hidden">
+          <img 
+            src={image}
+            alt={product.name}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
           />
-        </svg>
-      </a>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Overlay oscuro -->
+    <div class="absolute inset-0 bg-black/50 transition-opacity duration-300 group-hover:bg-black/40"></div>
+    
+    <!-- Contenido centrado sobre la imagen -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 py-8 text-white">
+      
+      <!-- Tags superiores -->
+      <div class="mb-3">
+        <p class="text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/80 font-light">
+          {product.tags.slice(0, 4).join(' · ')}
+        </p>
+      </div>
+      
+      <!-- Cantidad de presets -->
+      {product.presetCount && (
+        <div class="mb-4">
+          <p class="text-[11px] md:text-xs font-semibold uppercase tracking-wider text-white">
+            {product.presetCount}+ Presets en un solo bundle
+          </p>
+        </div>
+      )}
+      
+      <!-- Nombre del producto (grande, serif) -->
+      <div class="mb-3">
+        <h3 class="text-5xl md:text-6xl lg:text-7xl font-serif italic font-light leading-none text-white transition-transform duration-300 group-hover:scale-105">
+          {product.name}
+        </h3>
+      </div>
+      
+      <!-- Subtítulo -->
+      {product.subtitle && (
+        <div class="mb-4">
+          <p class="text-[10px] md:text-xs uppercase tracking-[0.3em] font-medium text-white/90">
+            {product.subtitle}
+          </p>
+        </div>
+      )}
+      
+      <!-- Icono de Lightroom -->
+      <div class="mt-2">
+        <div class="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-[#31A8FF] backdrop-blur-sm">
+          <span class="text-white font-bold text-lg md:text-xl">Lr</span>
+        </div>
+      </div>
+      
     </div>
   </div>
-</div>
+
+  <!-- Información debajo de la imagen -->
+  <div class="mt-4 space-y-2">
+    <!-- Número y nombre -->
+    <h4 class="text-lg md:text-xl font-normal text-text-primary group-hover:text-primary transition-colors">
+      {index + 1}. {product.name} {product.category === 'pack' ? 'Presets Pack' : 'Preset'}
+    </h4>
+    
+    <!-- Precios -->
+    <div class="flex items-center gap-3">
+      {formattedOriginalPrice && (
+        <span class="text-sm md:text-base text-text-muted line-through">
+          {formattedOriginalPrice}
+        </span>
+      )}
+      <span class="text-xl md:text-2xl font-bold text-gradient">
+        {formattedPrice}
+      </span>
+    </div>
+  </div>
+</a>
