@@ -8,38 +8,38 @@ export default {
         serif: ['Playfair Display', 'serif'],
       },
       colors: {
-        // Colores principales
+        // Colores principales - Blanco y Negro
         primary: {
-          DEFAULT: '#6366F1',
-          dark: '#4F46E5',
+          DEFAULT: '#FFFFFF',
+          dark: '#E5E5E5',
         },
         secondary: {
-          DEFAULT: '#EC4899',
+          DEFAULT: '#000000',
         },
         // Fondos oscuros
         bg: {
-          primary: '#0A0A0F',
-          secondary: '#13131A',
-          tertiary: '#1C1C26',
+          primary: '#000000',
+          secondary: '#0A0A0A',
+          tertiary: '#1A1A1A',
         },
         // Textos
         text: {
-          primary: '#F9FAFB',
-          secondary: '#9CA3AF',
-          muted: '#6B7280',
+          primary: '#FFFFFF',
+          secondary: '#B3B3B3',
+          muted: '#808080',
         },
         // Bordes
         border: {
-          DEFAULT: '#2D2D3A',
+          DEFAULT: '#333333',
         },
         // Estados
-        success: '#10B981',
-        error: '#EF4444',
-        warning: '#F59E0B',
+        success: '#FFFFFF',
+        error: '#FF0000',
+        warning: '#FFFF00',
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #6366F1 0%, #EC4899 100%)',
-        'gradient-dark': 'linear-gradient(180deg, #0A0A0F 0%, #13131A 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #FFFFFF 0%, #E5E5E5 100%)',
+        'gradient-dark': 'linear-gradient(180deg, #000000 0%, #0A0A0A 100%)',
       },
     },
   },

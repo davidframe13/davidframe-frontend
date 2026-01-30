@@ -23,6 +23,7 @@ const {
       src={heroImage}
       alt="Hero background"
       class="w-full h-full object-cover parallax"
+      style="object-position: 25% center;"
       id="hero-image"
     />
     <!-- Gradient Overlay -->
@@ -33,27 +34,27 @@ const {
   <div class="relative z-10 container-custom text-center px-4">
     <div class="max-w-4xl mx-auto space-y-6 fade-in-up">
       <!-- Heading -->
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight" style="font-family: 'Poppins', sans-serif;">
         Soy <span class="text-gradient">{photographer}</span>
       </h1>
       
       <!-- Tagline -->
-      <p class="text-xl md:text-2xl lg:text-3xl text-text-secondary font-light">
+      <p class="text-xl md:text-2xl lg:text-3xl text-white font-light" style="font-family: 'Poppins', sans-serif;">
         {tagline}
       </p>
 
       <!-- Description -->
-      <p class="text-base md:text-lg text-text-muted max-w-2xl mx-auto">
+      <p class="text-base md:text-lg text-white/90 max-w-2xl mx-auto font-normal" style="font-family: 'Poppins', sans-serif; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
         {description}
       </p>
 
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
         <a href="/productos" class="btn-primary w-full sm:w-auto text-center">
-          Ver Productos
+          Ver Productos 🎁
         </a>
         <a href="#productos-destacados" class="btn-secondary w-full sm:w-auto text-center">
-          Ver Ejemplos
+          Portafolio 📸
         </a>
       </div>
     </div>
@@ -62,7 +63,7 @@ const {
   <!-- Scroll Indicator -->
   <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 fade-in">
     <a 
-      href="#compatibilidad" 
+      href="#sesiones-fotograficas" 
       class="flex flex-col items-center gap-2 text-text-muted hover:text-primary transition-colors group"
       aria-label="Scroll hacia abajo"
     >
