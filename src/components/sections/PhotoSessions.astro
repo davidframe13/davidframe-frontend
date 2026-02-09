@@ -31,19 +31,108 @@ import { photoSessions } from '../../data/photoSessions';
           />
           
           <!-- Overlay con texto -->
-          <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-            <h3 class="text-2xl md:text-3xl font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-transform duration-300 group-hover:scale-105">
-              {session.title}
-            </h3>
-            {session.subtitle && (
-              <p class="text-sm md:text-base text-white/90 mt-2 drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]">
-                {session.subtitle}
-              </p>
+          <div class="absolute inset-0 z-10">
+            {/* URBANOLOGÍA - Diseño vertical */}
+            {session.id === '1' && (
+              <>
+                {/* Título vertical pegado al edificio (centro-izquierda) */}
+                <div class="absolute left-[30%] top-1/2 -translate-y-1/2 -translate-x-1/2">
+                  <h3 class="vertical-text text-xl md:text-2xl lg:text-3xl font-serif font-bold text-white uppercase
+                             drop-shadow-[0_6px_20px_rgba(0,0,0,0.95)]
+                             transition-all duration-500 ease-out
+                             group-hover:scale-105 
+                             group-hover:drop-shadow-[0_8px_24px_rgba(0,0,0,1)]"
+                      style="writing-mode: vertical-lr; transform: rotate(180deg); letter-spacing: 0.05em;">
+                    {session.title}
+                  </h3>
+                </div>
+                
+                {/* Subtítulo en la parte inferior derecha */}
+                {session.subtitle && (
+                  <div class="absolute bottom-3 md:bottom-4 right-3 md:right-4 left-[38%]">
+                    <p class="text-[0.45rem] md:text-[0.55rem] text-white/95 font-light tracking-[0.08em] uppercase text-right italic leading-tight
+                              drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]
+                              transition-all duration-500
+                              group-hover:text-white group-hover:scale-105">
+                      {session.subtitle}
+                    </p>
+                  </div>
+                )}
+              </>
+            )}
+            
+            {/* EVENTOS - Diseño horizontal centrado */}
+            {session.id === '2' && (
+              <>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                  <h3 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white uppercase text-center
+                             drop-shadow-[0_6px_20px_rgba(0,0,0,0.95)]
+                             transition-all duration-500 ease-out
+                             group-hover:scale-105 
+                             group-hover:drop-shadow-[0_8px_24px_rgba(0,0,0,1)]"
+                      style="letter-spacing: 0.08em;">
+                    {session.title}
+                  </h3>
+                </div>
+                
+                {/* Subtítulo en la parte inferior */}
+                <div class="absolute bottom-4 left-0 right-0 text-center">
+                  <p class="text-[0.6rem] md:text-[0.7rem] text-white/95 font-light tracking-[0.2em] uppercase
+                            drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]
+                            transition-all duration-500
+                            group-hover:text-white">
+                    MUSICA - SESIONES
+                  </p>
+                </div>
+              </>
+            )}
+            
+            {/* PRESETS - Diseño horizontal centrado con color amarillo */}
+            {session.id === '3' && (
+              <>
+                <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                  <h3 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold uppercase text-center presets-title
+                             drop-shadow-[0_6px_20px_rgba(0,0,0,0.95)]
+                             transition-all duration-500 ease-out
+                             group-hover:scale-105 
+                             group-hover:drop-shadow-[0_8px_24px_rgba(0,0,0,1)]"
+                      style="letter-spacing: 0.12em; color: #FFD700;">
+                    {session.title}
+                  </h3>
+                  <p class="text-xs md:text-sm text-white/90 font-light tracking-[0.3em] uppercase
+                            drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]">
+                    FRAME COLLECTION
+                  </p>
+                </div>
+              </>
+            )}
+            
+            {/* PRODUCTO - Diseño horizontal centrado */}
+            {session.id === '4' && (
+              <>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                  <h3 class="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-white uppercase text-center
+                             drop-shadow-[0_6px_20px_rgba(0,0,0,0.95)]
+                             transition-all duration-500 ease-out
+                             group-hover:scale-105 
+                             group-hover:drop-shadow-[0_8px_24px_rgba(0,0,0,1)]"
+                      style="letter-spacing: 0.08em;">
+                    {session.title}
+                  </h3>
+                </div>
+                
+                {/* Subtítulo en la parte inferior */}
+                <div class="absolute bottom-4 left-0 right-0 text-center">
+                  <p class="text-[0.6rem] md:text-[0.7rem] text-white/95 font-light tracking-[0.2em] uppercase
+                            drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]
+                            transition-all duration-500
+                            group-hover:text-white">
+                    RESTAURANTES - SERVICIOS
+                  </p>
+                </div>
+              </>
             )}
           </div>
-
-          <!-- Border effect en hover -->
-          <div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/50 transition-colors duration-300 rounded-lg pointer-events-none"></div>
         </a>
       ))}
     </div>
@@ -65,22 +154,46 @@ import { photoSessions } from '../../data/photoSessions';
     position: relative;
   }
   
+  /* Overlay sutil oscuro para mejorar la legibilidad del texto */
   .photo-session-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.3) 100%);
+    opacity: 1;
+    transition: opacity 0.5s ease;
     pointer-events: none;
     z-index: 1;
   }
   
   .photo-session-card:hover::before {
-    opacity: 1;
+    opacity: 0.9;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.4) 100%);
   }
 
   .photo-session-card > div:last-of-type {
     z-index: 2;
+  }
+
+  /* Efecto de brillo sutil en el borde al hacer hover */
+  .photo-session-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0 2px transparent;
+    transition: box-shadow 0.5s ease;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .photo-session-card:hover::after {
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Texto vertical con fuente serif */
+  .vertical-text {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1;
   }
 </style>
