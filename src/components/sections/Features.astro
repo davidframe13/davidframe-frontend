@@ -64,8 +64,8 @@ const getIcon = (iconName: string) => {
 <!-- Sección de Beneficios -->
 <section class="section bg-bg-primary relative">
   <div class="container-custom">
-    <!-- Layout de dos columnas -->
-    <div class="grid grid-cols-1 lg:grid-cols-[38%_1fr] gap-12 lg:gap-20 items-start fade-in-up relative">
+    <!-- Layout de dos columnas: Título y Descripción -->
+    <div class="grid grid-cols-1 lg:grid-cols-[38%_1fr] gap-12 lg:gap-20 items-start fade-in-up relative mb-16">
       
       <!-- Columna Izquierda: Título -->
       <div class="relative lg:pr-12 pb-8 lg:pb-0 border-b lg:border-b-0 border-border">
@@ -77,62 +77,64 @@ const getIcon = (iconName: string) => {
       <!-- Línea Divisoria (solo desktop) -->
       <div class="hidden lg:block absolute left-[38%] top-0 bottom-0 w-[1px] bg-border"></div>
 
-      <!-- Columna Derecha: Descripción + Compatibilidad -->
+      <!-- Columna Derecha: Descripción -->
       <div class="relative lg:pl-12 pt-8 lg:pt-0">
-        <p class="text-lg md:text-xl leading-[1.8] text-text-secondary text-justify mb-10">
+        <p class="text-lg md:text-xl leading-[1.8] text-text-secondary text-justify">
           Transforma tus fotografías con tonos y colores cinematográficos profesionales aplicados en un solo click. Cada preset ha sido probado en cientos de fotos reales, desde bodas, editoriales ó fotografía callejera.
           Con un pago único son tuyos para siempre, compatibles con Lightroom Desktop y Mobile. Incluye tutorial de instalación paso a paso para que comiences en minutos, sin importar tu nivel de experiencia.
         </p>
+      </div>
+
+    </div>
+
+    <!-- Grid de Compatibilidad con Logos - Centrado -->
+    <div class="flex justify-center fade-in-up">
+      <div class="grid grid-cols-3 gap-8 md:gap-12 pt-8 border-t border-border max-w-2xl">
+        <!-- Lightroom Desktop -->
+        <div class="flex flex-col items-center text-center space-y-2 fade-in-up">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <img 
+              src="/assets/logos/adobe-photoshop-lightroom.png" 
+              alt="Lightroom Desktop" 
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-text-primary">Lightroom Desktop</h3>
+            <p class="text-xs text-text-muted">Classic & CC</p>
+          </div>
+        </div>
         
-        <!-- Grid de Compatibilidad con Logos -->
-        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-border">
-          <!-- Lightroom Desktop -->
-          <div class="flex flex-col items-center text-center space-y-2 fade-in-up">
-            <div class="w-16 h-16 flex items-center justify-center">
-              <img 
-                src="/assets/logos/adobe-photoshop-lightroom.png" 
-                alt="Lightroom Desktop" 
-                class="w-full h-full object-contain"
-              />
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-text-primary">Lightroom Desktop</h3>
-              <p class="text-xs text-text-muted">Classic & CC</p>
-            </div>
+        <!-- Lightroom Mobile -->
+        <div class="flex flex-col items-center text-center space-y-2 fade-in-up" style="animation-delay: 0.1s">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <img 
+              src="/assets/logos/adobe-lightroom-logo.png" 
+              alt="Lightroom Mobile" 
+              class="w-full h-full object-contain"
+            />
           </div>
-          
-          <!-- Lightroom Mobile -->
-          <div class="flex flex-col items-center text-center space-y-2 fade-in-up" style="animation-delay: 0.1s">
-            <div class="w-16 h-16 flex items-center justify-center">
-              <img 
-                src="/assets/logos/adobe-lightroom-logo.png" 
-                alt="Lightroom Mobile" 
-                class="w-full h-full object-contain"
-              />
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-text-primary">Lightroom Mobile</h3>
-              <p class="text-xs text-text-muted">iOS & Android</p>
-            </div>
+          <div>
+            <h3 class="text-sm font-semibold text-text-primary">Lightroom Mobile</h3>
+            <p class="text-xs text-text-muted">iOS & Android</p>
           </div>
-          
-          <!-- RAW & JPG -->
-          <div class="flex flex-col items-center text-center space-y-2 fade-in-up" style="animation-delay: 0.2s">
-            <div class="w-16 h-16 flex items-center justify-center p-1">
-              <img 
-                src="/assets/logos/raw-symbol-removebg.png" 
-                alt="RAW & JPG" 
-                class="w-full h-full object-contain"
-              />
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-text-primary">RAW & JPG</h3>
-              <p class="text-xs text-text-muted">Totalmente compatible</p>
-            </div>
+        </div>
+        
+        <!-- RAW & JPG -->
+        <div class="flex flex-col items-center text-center space-y-2 fade-in-up" style="animation-delay: 0.2s">
+          <div class="w-16 h-16 flex items-center justify-center p-1">
+            <img 
+              src="/assets/logos/raw-symbol-removebg.png" 
+              alt="RAW & JPG" 
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-text-primary">RAW & JPG</h3>
+            <p class="text-xs text-text-muted">Totalmente compatible</p>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
