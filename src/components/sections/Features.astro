@@ -19,7 +19,8 @@ const getIcon = (iconName: string) => {
 };
 ---
 
-<!-- Sección de Compatibilidad -->
+<!-- Sección de Compatibilidad - OCULTA TEMPORALMENTE -->
+<!-- 
 <section id="compatibilidad" class="section bg-bg-secondary">
   <div class="container-custom">
     <div class="text-center mb-16 fade-in-up">
@@ -58,6 +59,7 @@ const getIcon = (iconName: string) => {
     </div>
   </div>
 </section>
+-->
 
 <!-- Sección de Beneficios -->
 <section class="section bg-bg-primary relative">
@@ -75,12 +77,33 @@ const getIcon = (iconName: string) => {
       <!-- Línea Divisoria (solo desktop) -->
       <div class="hidden lg:block absolute left-[38%] top-0 bottom-0 w-[1px] bg-border"></div>
 
-      <!-- Columna Derecha: Descripción -->
+      <!-- Columna Derecha: Descripción + Compatibilidad -->
       <div class="relative lg:pl-12 pt-8 lg:pt-0">
-        <p class="text-lg md:text-xl leading-[1.8] text-text-secondary text-justify">
+        <p class="text-lg md:text-xl leading-[1.8] text-text-secondary text-justify mb-10">
           Transforma tus fotografías con tonos y colores cinematográficos profesionales aplicados en un solo click. Cada preset ha sido probado en cientos de fotos reales, desde bodas, editoriales ó fotografía callejera.
           Con un pago único son tuyos para siempre, compatibles con Lightroom Desktop y Mobile. Incluye tutorial de instalación paso a paso para que comiences en minutos, sin importar tu nivel de experiencia.
         </p>
+        
+        <!-- Grid de Compatibilidad -->
+        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-border">
+          {compatibilityFeatures.map((feature, index) => {
+            const IconComponent = getIcon(feature.icon);
+            return (
+              <div 
+                class="flex flex-col items-center text-center space-y-2 fade-in-up"
+                style={`animation-delay: ${index * 0.1}s`}
+              >
+                <div class="w-14 h-14 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                  <IconComponent className="w-7 h-7 text-primary" />
+                </div>
+                <div>
+                  <h3 class="text-sm font-semibold text-text-primary">{feature.title}</h3>
+                  <p class="text-xs text-text-muted">{feature.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
     </div>
