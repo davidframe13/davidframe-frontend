@@ -1,0 +1,102 @@
+---
+import { Youtube } from 'lucide-react';
+
+interface Video {
+  id: string;
+  title: string;
+}
+
+const mainVideo: Video = {
+  id: 'dQw4w9WgXcQ', // Placeholder - replace with actual video ID
+  title: 'Video Principal'
+};
+
+const sideVideos: Video[] = [
+  {
+    id: 'dQw4w9WgXcQ', // Placeholder - replace with actual video ID
+    title: 'Video Secundario 1'
+  },
+  {
+    id: 'dQw4w9WgXcQ', // Placeholder - replace with actual video ID
+    title: 'Video Secundario 2'
+  }
+];
+
+const channelUrl = 'https://www.youtube.com/@DavidFrame.0';
+---
+
+<section id="youtube" class="section bg-bg-secondary">
+  <div class="container-custom">
+    <!-- Header -->
+    <div class="text-center mb-12 fade-in-up">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-text-primary mb-6" style="font-family: 'Playfair Display', serif;">
+        Youtube
+      </h2>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto mb-8">
+        En mi canal encontrarás videos sobre fotografía, edición, cámaras y creatividad. 
+        Todo el contenido que necesitas para llevar tu fotografía al siguiente nivel.
+      </p>
+      
+      <!-- Botón Suscribirse -->
+      <a 
+        href={channelUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-8 py-3 bg-[#FF0000] hover:bg-[#CC0000] text-white font-medium rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
+      >
+        <Youtube className="w-5 h-5" />
+        Suscribirse
+      </a>
+    </div>
+
+    <!-- Grid de Videos -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 fade-in-up">
+      <!-- Video Principal -->
+      <div class="lg:col-span-2">
+        <div class="relative aspect-video rounded-xl overflow-hidden bg-bg-tertiary shadow-2xl">
+          <iframe
+            src={`https://www.youtube.com/embed/${mainVideo.id}`}
+            title={mainVideo.title}
+            class="absolute inset-0 w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Videos Secundarios -->
+      <div class="flex flex-col gap-6">
+        {sideVideos.map((video, index) => (
+          <div class="relative aspect-video rounded-xl overflow-hidden bg-bg-tertiary shadow-xl">
+            <iframe
+              src={`https://www.youtube.com/embed/${video.id}`}
+              title={video.title}
+              class="absolute inset-0 w-full h-full"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA Ver más videos -->
+    <div class="text-center mt-12 fade-in">
+      <a 
+        href={channelUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-secondary inline-flex items-center gap-2 text-lg px-8 py-4"
+      >
+        Ver más videos
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
